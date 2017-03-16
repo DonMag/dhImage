@@ -2,8 +2,8 @@
 //  RView.m
 //  DynamicHeightImage
 //
-//  Created by Don Mini on 3/15/17.
-//  Copyright © 2017 Neosoft. All rights reserved.
+//  Created by DonMag on 3/15/17.
+//  MIT License
 //
 
 #import "RView.h"
@@ -11,23 +11,30 @@
 @implementation RView
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-
- UIBezierPath *	leftMaskPath = [UIBezierPath
+- (void)layoutSubviews {
+	
+	[super layoutSubviews];
+	
+	UIBezierPath *maskPath;
+	
+	if (_leftOrRight == MASK_LEFT) {
+		maskPath = [UIBezierPath
 					bezierPathWithRoundedRect:self.bounds
 					byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerTopLeft)
 					cornerRadii:CGSizeMake(20, 20)];
+	} else {
+		maskPath = [UIBezierPath
+					bezierPathWithRoundedRect:self.bounds
+					byRoundingCorners:(UIRectCornerBottomRight | UIRectCornerTopRight)
+					cornerRadii:CGSizeMake(20, 20)];
+	}
 	
-
 	CAShapeLayer *maskLayer = [CAShapeLayer layer];
-	maskLayer.frame = rect;
-	maskLayer.path = leftMaskPath.CGPath;
-	self.layer.mask = maskLayer;
+	maskLayer.frame = self.bounds;
 	
-}
+	maskLayer.path = maskPath.CGPath;
+	self.layer.mask = maskLayer;
 
+}
 
 @end

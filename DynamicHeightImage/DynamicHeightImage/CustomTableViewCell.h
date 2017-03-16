@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"
 
+#import "RView.h"
+
 @interface CustomTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *nImageView;
-@property (weak, nonatomic) IBOutlet UIView *bubbleView;
+
+// bubbleView is now an "RView" (UIView subclass)
+@property (weak, nonatomic) IBOutlet RView *bubbleView;
 
 @property (strong, nonatomic) UIBezierPath *leftMaskPath;
 @property (strong, nonatomic) UIBezierPath *rightMaskPath;
@@ -20,5 +24,8 @@
 
 
 - (void)setupCellWithImageUrl:(NSString *)imageUrl andRow:(NSInteger)row;
-- (void)configureBubbleInRow:(NSInteger)row;
+
+// not needed anymore
+//- (void)configureBubbleInRow:(NSInteger)row;
+
 @end

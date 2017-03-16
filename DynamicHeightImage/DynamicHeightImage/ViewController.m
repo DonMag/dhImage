@@ -17,7 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    imageUrlArray = [[NSArray alloc] initWithObjects:@"http://placehold.it/350x200", @"http://placehold.it/150x350", @"http://placehold.it/350x150", @"http://placehold.it/350x150", @"http://placehold.it/350x150", @"http://placehold.it/250x450", @"http://placehold.it/350x250", @"https://media1.giphy.com/media/26xBDugwcg9fn27tu/giphy.gif", nil];
+    imageUrlArray = [[NSArray alloc] initWithObjects:
+					 @"https://media1.giphy.com/media/26xBDugwcg9fn27tu/giphy.gif",
+					 @"http://placehold.it/350x200",
+					 @"http://placehold.it/150x350",
+					 @"http://lorempixel.com/350/200",
+					 @"http://placehold.it/350x150",
+					 @"http://placehold.it/350x150",
+					 @"http://lorempixel.com/350/250",
+					 @"http://placehold.it/350x150",
+					 @"http://placehold.it/250x450",
+					 @"http://lorempixel.com/350/300",
+					 @"http://placehold.it/350x150",
+					 @"http://lorempixel.com/350/310",
+					 @"http://lorempixel.com/350/320",
+					 @"http://lorempixel.com/350/330",
+					 @"http://placehold.it/350x150",
+					 nil];
 
     _nTableView.rowHeight = UITableViewAutomaticDimension;
     _nTableView.estimatedRowHeight = 150;
@@ -42,8 +58,11 @@
     }
 
     [cell setupCellWithImageUrl:[imageUrlArray objectAtIndex:indexPath.row] andRow:indexPath.row];
+	
+	// Don't need a separate call to configure - everything is handled in setupCellWithImageUrl
 //    [cell configureBubbleInRow:indexPath.row];
-    return cell;
+	
+	return cell;
 }
 
 
