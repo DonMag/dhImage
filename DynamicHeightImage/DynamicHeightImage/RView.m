@@ -23,7 +23,7 @@
 	
 
 	CAShapeLayer *maskLayer = [CAShapeLayer layer];
-	maskLayer.frame = self.bounds;
+	maskLayer.frame = rect;
 	maskLayer.path = leftMaskPath.CGPath;
 	self.layer.mask = maskLayer;
 	
